@@ -35,4 +35,24 @@ class User extends Authenticatable
 			'age' => $this->age,
 		];
 	}
+
+	// TESTES
+
+	// nome do usuario é valido
+	public function nomeEhValido(string $name): bool
+	{
+		return preg_match('/^[a-zA-Z ]+$/', $name) === 1;
+	}
+
+	// idade do usuario é valida
+	public function idadeEhValida(int $age): bool
+	{
+		return $age >= 18;
+	}
+
+	// nome e idade do usuario são validos
+	public function nomeEIdadeSaoValidos(string $name, int $age): bool
+	{
+		return $this->nomeEhValido($name) && $this->idadeEhValida($age);
+	}
 };

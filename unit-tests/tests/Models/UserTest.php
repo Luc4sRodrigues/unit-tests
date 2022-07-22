@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Faker\Factory;
+use Termwind\Components\Dd;
 use Tests\CreatesApplication;
 use Tests\TestCase;
 
@@ -25,7 +26,7 @@ class UserTest extends TestCase
 		parent::setUp();
 
 		$this->faker = Factory::create();
-		$this->user = new \App\Models\User($this->faker->name, $this->faker->numberBetween(18, 99));
+		$this->user = new \App\Models\User($this->faker->name(), $this->faker->numberBetween(18, 99));
 	}
 
 	public function testGetUser(): void
@@ -36,24 +37,26 @@ class UserTest extends TestCase
 		], $this->user->getUser());
 	}
 
-	public function testGetUserWithInvalidName(): void
+	// testar se o nome do usuario é válido
+	public function testNomeEhValido(): void
 	{
-		$this->expectException(\InvalidArgumentException::class);
-		$this->expectExceptionMessage('Name must be at least 3 characters long.');
-		$this->user = new \App\Models\User($this->faker->name(2), $this->faker->numberBetween(18, 99));
+		$this->assertTrue($this->user->nomeEhValido('Lucas Rodrigues'));
 	}
 
-	public function testGetUserWithInvalidAge(): void
+	// testar se a idade do usuario é válida
+	public function testIdadeEhValida(): void
 	{
-		$this->expectException(\InvalidArgumentException::class);
-		$this->expectExceptionMessage('Age must be between 18 and 99.');
-		$this->user = new \App\Models\User($this->faker->name, $this->faker->numberBetween(17, 100));
+		$this->assertTrue($this->user->idadeEhValida(28));
 	}
 
-	public function testGetUserWithInvalidNameAndAge(): void
+	// testar se o nome e a idade do usuario são válidos
+	public function testNomeEIdadeSaoValidos(): void
 	{
-		$this->expectException(\InvalidArgumentException::class);
-		$this->expectExceptionMessage('Name must be at least 3 characters long. Age must be between 18 and 99.');
-		$this->user = new \App\Models\User($this->faker->name(2), $this->faker->numberBetween(17, 100));
+		$this->assertTrue($this->user->nomeEIdadeSaoValidos('Lucas Rodrigues', 28));
+	}
+
+	public function tearDown(): void
+	{
+		parent::tearDown();
 	}
 }
