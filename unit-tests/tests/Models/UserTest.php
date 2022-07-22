@@ -21,6 +21,11 @@ class UserTest extends TestCase
 	 */
 	protected $user;
 
+	/**
+	 * @var \App\Services\UserService
+	 */
+	protected $userService;
+
 	public function setUp(): void
 	{
 		parent::setUp();
