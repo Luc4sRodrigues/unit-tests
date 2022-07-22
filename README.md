@@ -2,7 +2,7 @@
 
 ## O que é?
 
-Aplicação para testes de unidade com PHP Unit. Desenvolvido para estudos.
+Aplicação para testes de unidade com PHP Unit em um projeto Laravel. Desenvolvido para estudos.
 
 ## Construído com`:`
 
