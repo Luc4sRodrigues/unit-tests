@@ -36,7 +36,7 @@ class User extends Authenticatable
 		];
 	}
 
-	// TESTES
+	// VALIDAÇÕES
 
 	// nome do usuario é valido
 	public function nomeEhValido(string $name): bool
