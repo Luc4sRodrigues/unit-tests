@@ -44,7 +44,7 @@ class UserTest extends TestCase
 	// testar se o nome do usuário é válido
 	public function testNomeEhValido(): void
 	{
-		$this->assertTrue($this->user->nomeEhValido('Lucas'), 'Nome do usuário é inválido!');
+		$this->assertTrue($this->user->nomeEhValido('Lucas'), 'Nome do usuário inválido!');
 	}
 
 	// testar se a idade do usuário é válida
