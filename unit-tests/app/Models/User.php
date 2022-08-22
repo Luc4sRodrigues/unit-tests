@@ -38,19 +38,19 @@ class User extends Authenticatable
 
 	// VALIDAÇÕES
 
-	// nome do usuario é valido
+	// nome do usuario é válido
 	public function nomeEhValido(string $name): bool
 	{
 		return preg_match('/^[a-zA-Z ]+$/', $name) === 1;
 	}
 
-	// idade do usuario é valida
+	// idade do usuario é válida
 	public function idadeEhValida(int $age): bool
 	{
 		return $age >= 18;
 	}
 
-	// nome e idade do usuario são validos
+	// nome e idade do usuario são válidos
 	public function nomeEIdadeSaoValidos(string $name, int $age): bool
 	{
 		return $this->nomeEhValido($name) && $this->idadeEhValida($age);
